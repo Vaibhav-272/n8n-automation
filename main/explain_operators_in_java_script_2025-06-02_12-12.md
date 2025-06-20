@@ -5,7 +5,7 @@
 Operators are special symbols in JavaScript that perform operations on values, known as operands. They instruct the JavaScript engine to carry out mathematical, logical, or other manipulations, producing a result. Think of them as the verbs of the JavaScript language.
 
 ## Types of Operators
-
+sldkhger
 JavaScript offers a variety of operators. Here's a look at some of the most commonly used ones:
 
 ### 1. Arithmetic Operators
