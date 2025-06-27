@@ -1,1 +1,0 @@
-Add functional test: functional_dashboard_test.py
