@@ -7,7 +7,7 @@ on:
     branches:
       - main
   pull_request:
-  workflow_dispatch:  # Required to allow manual or API triggers
+  workflow_dispatch:  # Allows manual or API triggering
 
 jobs:
   build-and-test:
@@ -20,17 +20,17 @@ jobs:
       - name: Run tests
         run: |
           echo "Running CI tests..."
-          exit 1  # Replace with your actual tests
+          exit 1  # Simulate failure (replace with real test command)
 
       - name: Send result to n8n
-        if: always()  # Run this step even if tests fail
+        if: always()  # Run this step regardless of test result
         run: |
-          curl -X POST https://n8n.itechnotion.dev/webhook/cicd-status \
-            -H "Content-Type: application/json" \
-            -d '{
-              "repo": "${{ github.repository }}",
-              "commit": "${{ github.sha }}",
-              "status": "${{ job.status }}",
-              "run_id": "${{ github.run_id }}",
-              "html_url": "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-            }'
+          echo '{
+            "repo": "'${{ github.repository }}'",
+            "commit": "'${{ github.sha }}'",
+            "status": "'${{ job.status }}'",
+            "run_id": "'${{ github.run_id }}'",
+            "html_url": "https://github.com/'${{ github.repository }}'/actions/runs/'${{ github.run_id }}'"
+          }' | curl -X POST https://n8n.itechnotion.dev/webhook/cicd-status \
+               -H "Content-Type: application/json" \
+               -d @-
