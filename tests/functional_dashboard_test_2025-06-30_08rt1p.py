@@ -58,4 +58,3 @@ def test_responsive_layout(page):
     expect(page.locator("#sidebarLink")).to_be_visible()
 
     page.set_viewport_size({"width": 768, "height": 1024})
-    # Optionally add mobile-specific UI tests here
